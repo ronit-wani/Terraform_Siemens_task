@@ -31,3 +31,11 @@ output "instance_public_ip" {
   description = "Public IP address of the EC2 instance"
   value       = aws_instance.terra_ec2.private_ip
 }
+output "s3_bucket_arn" {
+  value       = aws_s3_bucket.terraform_state.arn
+  description = "The ARN of the S3 bucket"
+}
+output "dynamodb_table_name" {
+  value       = aws_dynamodb_table.terraform_locks.name
+  description = "The name of the DynamoDB table"
+}
