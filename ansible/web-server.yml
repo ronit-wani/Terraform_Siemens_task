@@ -1,0 +1,34 @@
+- hosts: all
+  become: yes
+  pre_tasks:
+
+    - name: Install Updates
+      dnf: 
+        name: '*'
+        state: latest
+        update_cache: yes
+      
+
+- hosts: webservers
+  become: yes
+  tasks:
+
+    - name: Install Nginx
+      dnf: 
+        name: nginx
+        state: latest
+        update_cache: yes
+
+    - name: Start Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Copy HTML files for website
+      copy:
+        src: index.html
+        dest: /usr/share/nginx/html/index.html
+        owner: root
+        group: root
+        mode: 0644
