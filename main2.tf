@@ -194,24 +194,3 @@ resource "aws_autoscaling_group" "autoscale" {
     version = "$Latest"
   }
 }
-
-# resource "tls_self_signed_cert" "self_signed" {
-#   #   key_algorithm   = tls_private_key.web_app_key.algorithm
-#   private_key_pem = tls_private_key.web_app_key.private_key_pem
-#   subject {
-#     common_name = "test.example.com"
-#   }
-#   validity_period_hours = 8760
-
-#   allowed_uses = [
-#     "key_encipherment",
-#     "digital_signature",
-#     "server_auth",
-#   ]
-#   dns_names = ["test.example.com"]
-# }
-
-# resource "aws_lb_listener_certificate" "web_app_cert" {
-#   listener_arn    = aws_lb_listener.https_rule.arn
-#   **certificate_arn = tls_self_signed_cert.self_signed.?**
-# }
